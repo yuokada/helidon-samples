@@ -26,9 +26,6 @@ import io.helidon.microprofile.server.Server;
  */
 public final class Main {
 
-    /**
-     * Cannot be instantiated.
-     */
     private Main() { }
 
     /**
@@ -50,7 +47,6 @@ public final class Main {
         // load logging configuration
         LogManager.getLogManager().readConfiguration(
                 Main.class.getResourceAsStream("/logging.properties"));
-
 
         // Server will automatically pick up configuration from
         // microprofile-config.properties
