@@ -13,7 +13,6 @@ import io.helidon.webserver.ServerConfiguration;
 import io.helidon.webserver.WebServer;
 import java.io.IOException;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.CompletionStage;
 import java.util.logging.LogManager;
 import javax.enterprise.context.ApplicationScoped;
@@ -34,8 +33,8 @@ public class Main {
         Map<String, String> configMap = config.asMap();
         ServerConfiguration serverConfiguration = ServerConfiguration.fromConfig(config.get("servers"));
 
-        Optional<String> conget = config.get("MESSAGE").asOptionalString();
-        System.out.println(conget.get());
+//        Optional<String> conget = config.get("MESSAGE").asOptionalString();
+//        System.out.println(conget.get());
 
         Server server = Server.builder()
             .addResourceClass(HelloWorldControler.class)

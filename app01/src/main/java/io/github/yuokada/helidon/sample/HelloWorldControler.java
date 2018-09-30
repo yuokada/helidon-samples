@@ -1,6 +1,5 @@
 package io.github.yuokada.helidon.sample;
 
-import io.helidon.security.SecurityContext;
 import java.util.HashMap;
 import java.util.Map;
 import javax.enterprise.context.RequestScoped;
@@ -27,7 +26,7 @@ public class HelloWorldControler {
     @Metered  // <= get metrics
 //    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response hello(@Context SecurityContext context,
+    public Response hello(
         @Context HttpHeaders headers) {
         System.out.println(headers.getHeaderString("X-DEBUG"));
         Map<String, Object> mmap = new HashMap<>();
@@ -45,7 +44,7 @@ public class HelloWorldControler {
     @Path(value = "/detail/{name:[a-z][a-z0-9\\-]+}")
     @Metered
     @Produces(MediaType.APPLICATION_JSON)
-    public Response detail2(Response response, @PathParam("name") String name,
+    public Response detail2(@PathParam("name") String name,
         @QueryParam("ex") String ex) {
         if (!ex.isEmpty()) {
             Map<String, Object> mm = new HashMap<String, Object>() {{

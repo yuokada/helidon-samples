@@ -14,10 +14,3 @@
 # limitations under the License.
 #
 env: dev
-
-services:
-  zipkin.host: "localhost"
-
-cassandra:
-  servers:
-    - host: localhost
