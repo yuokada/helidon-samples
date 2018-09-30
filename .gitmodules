@@ -1,0 +1,3 @@
+[submodule "heroku-sample"]
+	path = heroku-sample
+	url = https://github.com/heroku/java-getting-started.git
