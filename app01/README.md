@@ -56,3 +56,14 @@ https://github.com/hensol/quickstart-mp/blob/6f6a2637bb9a954ee0bf7ba6830cfbeb1d3
 
 - [The Central Repository Search Engine](https://search.maven.org/search?q=g:io.helidon.webserver "The Central Repository Search Engine")
 - [Oracle Blogs 日本語のまとめ: [Java] Helidon Takes Flight](https://orablogs-jp.blogspot.com/2018/09/helidon-takes-flight.html "Oracle Blogs 日本語のまとめ: [Java] Helidon Takes Flight")
+
+
+```
+$ mvn archetype:generate -DinteractiveMode=false \
+     -DarchetypeGroupId=io.helidon.archetypes \
+     -DarchetypeArtifactId=helidon-quickstart-mp \
+     -DarchetypeVersion=0.10.0  \
+     -DgroupId=io.github.yuokada.samples \
+     -DartifactId=helidon-mp  \
+     -Dpackage=io.github.yuokada.samples.helidon.mp
+```
