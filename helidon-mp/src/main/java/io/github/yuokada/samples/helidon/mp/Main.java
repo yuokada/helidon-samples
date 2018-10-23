@@ -16,20 +16,24 @@
 
 package io.github.yuokada.samples.helidon.mp;
 
+import static io.helidon.config.ConfigSources.environmentVariables;
+
+import io.helidon.config.Config;
+import io.helidon.microprofile.server.Server;
 import java.io.IOException;
 import java.util.logging.LogManager;
-
-import io.helidon.microprofile.server.Server;
 
 /**
  * Main method simulating trigger of main method of the server.
  */
 public final class Main {
 
-    private Main() { }
+    private Main() {
+    }
 
     /**
      * Application main entry point.
+     *
      * @param args command line arguments
      * @throws IOException if there are problems reading logging properties
      */
@@ -39,6 +43,7 @@ public final class Main {
 
     /**
      * Start the server.
+     *
      * @return the created {@link Server} instance
      * @throws IOException if there are problems reading logging properties
      */
@@ -46,12 +51,23 @@ public final class Main {
 
         // load logging configuration
         LogManager.getLogManager().readConfiguration(
-                Main.class.getResourceAsStream("/logging.properties"));
+            Main.class.getResourceAsStream("/logging.properties"));
+
+        Config config = readConfig();
+        int port = config.get("PORT").asInt(8080);
 
         // Server will automatically pick up configuration from
         // microprofile-config.properties
-        Server server = Server.create();
+        Server server = Server.builder()
+            .port(port)
+            .build();
         server.start();
         return server;
+    }
+
+    private static Config readConfig() {
+        return Config.builder().sources(
+            environmentVariables()
+        ).build();
     }
 }

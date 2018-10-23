@@ -111,6 +111,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -143,6 +144,23 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>0.4.4</version>
+                <configuration>
+                    <jdkVersion>1.8</jdkVersion>
+                    <!-- Use your own application name -->
+                    <appName>${project.artifactId}</appName>
+                    <processTypes>
+                        <!-- Tell Heroku how to launch your application -->
+                        <!-- You might have to remove the ./ in front   -->
+                        <web>java -jar ./target/helidon-mp.jar</web>
+                    </processTypes>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -185,6 +203,18 @@
                 <artifactId>jersey-media-json-binding</artifactId>
                 <version>2.26</version>
             </dependency>
+
+            <dependency>
+                <groupId>io.helidon.config</groupId>
+                <artifactId>helidon-config</artifactId>
+                <version>0.10.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.helidon.config</groupId>
+                <artifactId>helidon-config-yaml</artifactId>
+                <version>0.10.0</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -218,5 +248,17 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.helidon.config</groupId>
+            <artifactId>helidon-config</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.helidon.config</groupId>
+            <artifactId>helidon-config-yaml</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 </project>
