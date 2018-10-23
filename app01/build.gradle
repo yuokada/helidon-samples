@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'io.github.yuokada'
+version = '1.0-SNAPSHOT'
+
+description = """java-getting-started"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+
+repositories {
+        
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'io.helidon.microprofile.bundles', name: 'helidon-microprofile-1.2', version:'0.10.0'
+    compile group: 'io.helidon.webserver', name: 'helidon-webserver-netty', version:'0.10.0'
+    compile group: 'io.helidon.microprofile.metrics', name: 'helidon-metrics-se', version:'0.10.0'
+    compile group: 'io.helidon.common', name: 'helidon-common', version:'0.10.0'
+    compile group: 'io.helidon.common', name: 'helidon-common-configurable', version:'0.10.0'
+    compile group: 'io.helidon.config', name: 'helidon-config', version:'0.10.0'
+    compile group: 'io.helidon.config', name: 'helidon-config-yaml', version:'0.10.0'
+    compile group: 'io.helidon.webserver', name: 'helidon-webserver-json', version:'0.10.0'
+    compile group: 'org.postgresql', name: 'postgresql', version:'42.2.2'
+}
